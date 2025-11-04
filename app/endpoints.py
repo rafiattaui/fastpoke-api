@@ -8,7 +8,6 @@ router = APIRouter()
 
 @router.get("/pokemon") # /pokemon?name=Pikachu
 async def get_pokemon_by_name(name: str, http: httpx.AsyncClient = Depends(get_http_client)):
-    print(name)
     endp = "/pokemon/" + name
     res = await http.get(endp)
     
