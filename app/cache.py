@@ -47,6 +47,6 @@ class RedisClient:
     @classmethod
     async def close_conn(cls, flush: bool = False):
         if flush:
-            cls._instance.flushall()
+            await cls._instance.flushall()
         await cls._instance.aclose()
 

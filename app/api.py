@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-import httpx
 from app.endpoints import router
 from app.httpxclient import HTTPXClient
 from app.cache import RedisClient
@@ -13,8 +12,9 @@ async def lifespan(app: FastAPI):
     await RedisClient.init()
 
     yield
-
-    await RedisClient.close_conn()
+    
+    await HTTPXClient.close_conn()
+    await RedisClient.close_conn(flush=True)
 
 app = FastAPI(title="PokeCache API", lifespan=lifespan)
 app.include_router(router)

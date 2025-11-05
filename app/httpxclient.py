@@ -11,3 +11,7 @@ class HTTPXClient:
     @classmethod
     async def get_http_client(cls) -> httpx.AsyncClient:
         return cls._instance
+    
+    @classmethod
+    async def close_conn(cls):
+        await cls._instance.aclose()
