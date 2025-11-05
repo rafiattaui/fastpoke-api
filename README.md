@@ -34,9 +34,13 @@ This ensures **faster responses** and **lower API latency**.
 ## 🧩 Project Structure
 
 app/
+
 ├── cache.py # Redis client (singleton pattern)
+
 ├── endpoints.py # API route handlers
+
 ├── httpxclient.py # Shared async HTTPX client (also singleton pattern)
+
 └── main.py # FastAPI app entry point with lifespan context
 
 ## 📦 API Endpoints
